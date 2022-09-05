@@ -12,7 +12,6 @@ const main = async () => {
     const filterType = ['ERROR', 'panic', 'WARN']
     tail.on("line", async function(passedLine) {
         const errorFound = filterType.filter((str) => passedLine.toLowerCase().includes(str.toLowerCase()));
-        console.log("error Found : ", errorFound);
         if (errorFound.length > 0){
             console.log("Error | Warning Found! : ", passedLine);
             await axios.post(WEBHOOK_URL, {
@@ -20,7 +19,7 @@ const main = async () => {
                     {
                         "fallback": "요청이 실패했습니다.",
                         "color": "#FF1122",
-                        "pretext": `${String.fromCodePoint(0x1F621)}${String.fromCodePoint(0x1F621)} 노드 에러 발생 ${String.fromCodePoint(0x1F621)}${String.fromCodePoint(0x1F621)}`,
+                        "pretext": `${String.fromCodePoint(0x1F621)}${String.fromCodePoint(0x1F621)} 노드 Error / Warning ${String.fromCodePoint(0x1F621)}${String.fromCodePoint(0x1F621)}`,
                         "text": `${passedLine}`,
                         "footer": "Error Parser",
                     }
