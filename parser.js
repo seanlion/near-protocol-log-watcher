@@ -1,12 +1,15 @@
 Tail = require('tail').Tail;
+const dotenv = require('dotenv');
+dotenv.config();
 
-var options= {separator: /[\r]{0,1}\n/,  fsWatchOptions: {}, fromBeginning: false, nLines:1, follow: true}
-tail = new Tail("./neardmain.log", options);
+var options= {separator: /[\r]{0,1}\n/,  fsWatchOptions: {}, fromBeginning: false, nLines:4, follow: true}
+tail = new Tail(process.env.FILE, options);
 
 const filterType = ['ERROR', 'panic', 'DEBUG']
 tail.on("line", function(passedLine) {
-    const errorFound = filterType.filter((str) => str.toLowerCase().includes(passedLine.toLowerCase()));
-    if (errorFound){
+    const errorFound = filterType.filter((str) => passedLine.toLowerCase().includes(str.toLowerCase()));
+    console.log("error found : ", errorFound);
+    if (errorFound.length > 0){
         console.log("Error Found!");
     }
     else{
