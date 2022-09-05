@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.2",
-    "tail": "^2.2.4"
+    "tail": "^2.2.4",
+    "axios": "^0.27.2"
   }
 }
