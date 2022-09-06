@@ -1,6 +1,8 @@
 ## Log watcher for Near node
 The project is a real time log watcher. It reads an output log file from a NEAR node, and filters the selected keywords (‘ERROR’, ‘panic’). If it exists, the watcher alarms the operator to monitor the node by sending a log line to the slack channel.
 
+(but there is one caveat that this project might works strangly under macOS.(Node JS `fs.watch` is unstable under macOS). I recommend using it under linux. 
+
 ### Setup
 **Environment**
 - node.js v14 or v16
