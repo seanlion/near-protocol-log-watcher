@@ -1,8 +1,8 @@
 {
-  "name": "log-tail-parser",
+  "name": "log-tail-watcher",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Near node log file watcher",
+  "main": "watcher.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

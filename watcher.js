@@ -9,7 +9,7 @@ var options= {separator: /[\r]{0,1}\n/,  fsWatchOptions: {}, fromBeginning: fals
 tail = new Tail(process.env.FILE, options);
 
 const main = async () => {
-    const filterType = ['ERROR', 'panic', 'WARN']
+    const filterType = ['ERROR', 'panic']
     tail.on("line", async function(passedLine) {
         const errorFound = filterType.filter((str) => passedLine.toLowerCase().includes(str.toLowerCase()));
         if (errorFound.length > 0){
@@ -17,9 +17,9 @@ const main = async () => {
             await axios.post(WEBHOOK_URL, {
                 "attachments": [
                     {
-                        "fallback": "요청이 실패했습니다.",
+                        "fallback": "Incoming webhook request failed.",
                         "color": "#FF1122",
-                        "pretext": `${String.fromCodePoint(0x1F621)}${String.fromCodePoint(0x1F621)} 노드 Error / Warning ${String.fromCodePoint(0x1F621)}${String.fromCodePoint(0x1F621)}`,
+                        "pretext": `${String.fromCodePoint(0x1F621)}${String.fromCodePoint(0x1F621)} Node Error / Warning ${String.fromCodePoint(0x1F621)}${String.fromCodePoint(0x1F621)}`,
                         "text": `${passedLine}`,
                         "footer": "Error Parser",
                     }
