@@ -1,5 +1,5 @@
 ## Log watcher for Near node
-The project is a real time log watcher. It reads an output log file from a NEAR node, and filters the selected keywords (‘ERROR’, ‘panic’). If it exists, the project alarms the operator to monitor the node by sending a log line to the slack channel.
+The project is a real time log watcher. It reads an output log file from a NEAR node, and filters the selected keywords (‘ERROR’, ‘panic’). If it exists, the watcher alarms the operator to monitor the node by sending a log line to the slack channel.
 
 ### Setup
 **Environment**
